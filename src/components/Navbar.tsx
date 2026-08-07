@@ -83,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnroll }) => {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
-            className="flex items-center gap-3 group focus:outline-none flex-shrink-0"
+            className="flex items-center gap-3 group focus:outline-none flex-shrink-0 mr-4"
           >
             <img src={logo} alt="iStudy Academy logo" className="w-12 h-12 rounded-2xl shadow-lg shadow-slate-300 transition-transform duration-300 group-hover:scale-105 object-contain" />
             <div>
@@ -95,7 +95,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnroll }) => {
 
           {/* Desktop Nav Links */}
           <nav
-            className={`hidden xl:flex items-center gap-2 p-1.5 rounded-full border backdrop-blur-md overflow-x-auto max-w-[60%] ${
+            className={`hidden xl:flex items-center gap-2 p-1.5 rounded-full border backdrop-blur-md overflow-x-auto max-w-[45%] ${
               theme === 'dark' ? 'bg-slate-800/90 border-slate-700/80' : 'bg-slate-100/90 border-slate-200/80'
             }`}
             aria-label="Primary"

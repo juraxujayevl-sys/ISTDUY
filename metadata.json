@@ -1,0 +1,6 @@
+{
+  "name": "iStudy Academy",
+  "description": "Premium international education center offering IELTS, CEFR, SAT, Languages, and Tech courses with expert mentors.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

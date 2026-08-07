@@ -40,6 +40,7 @@ export const Footer: React.FC<FooterProps> = ({ onSubscribeNewsletter, onOpenPri
             <input
               type="email"
               required
+              aria-label="Email address for newsletter"
               placeholder={t('footer.emailPlaceholder')}
               value={email}
               onChange={(e) => setEmail(e.target.value)}

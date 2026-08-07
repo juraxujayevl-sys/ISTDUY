@@ -32,6 +32,7 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({ course, on
 
           <button
             onClick={onClose}
+            aria-label="Close details"
             className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-slate-700 hover:text-slate-900 flex items-center justify-center backdrop-blur-md border border-slate-200 shadow-md transition-colors"
           >
             <X className="w-4 h-4" />

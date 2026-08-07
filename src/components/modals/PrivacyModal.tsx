@@ -23,7 +23,7 @@ export const PrivacyModal: React.FC<PrivacyProps> = ({ isOpen, onClose }) => {
             <ShieldCheck className="w-5 h-5 text-emerald-600" />
             <h3 className="text-base font-bold text-slate-900">Privacy Policy & Academic Terms</h3>
           </div>
-          <button onClick={onClose} className="p-1 text-slate-400 hover:text-slate-700 transition-colors">
+          <button onClick={onClose} aria-label="Close privacy policy" className="p-1 text-slate-400 hover:text-slate-700 transition-colors">
             <X className="w-4 h-4" />
           </button>
         </div>

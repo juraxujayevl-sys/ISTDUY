@@ -140,6 +140,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, initialCourseI
 
           <button
             onClick={onClose}
+            aria-label="Close portal"
             className="w-9 h-9 rounded-2xl bg-slate-200/70 hover:bg-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
@@ -229,8 +230,9 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, initialCourseI
                 </div>
               ) : (
                 <div className="space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                  <label className="block text-xs font-bold text-slate-800">Desired Course Name *</label>
+                  <label htmlFor="customCourseName" className="block text-xs font-bold text-slate-800">Desired Course Name *</label>
                   <input
+                    id="customCourseName"
                     type="text"
                     required
                     value={customCourseName}
@@ -266,7 +268,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, initialCourseI
 
               {/* Campus Selector */}
               <div className="space-y-2.5">
-                <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wider">
+                <label htmlFor="customBranchName" className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wider">
                   <MapPin className="w-4 h-4 text-blue-600" />
                   <span>Campus Location *</span>
                 </label>
@@ -303,6 +305,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, initialCourseI
                   </div>
                 ) : (
                   <input
+                    id="customBranchName"
                     type="text"
                     required
                     value={customBranchName}
@@ -315,11 +318,12 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, initialCourseI
 
               {/* Shift Selector */}
               <div className="space-y-2.5 pt-2">
-                <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wider">
+                <label htmlFor="selectedShift" className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wider">
                   <Clock className="w-4 h-4 text-blue-600" />
                   <span>Preferred Class Shift *</span>
                 </label>
                 <select
+                  id="selectedShift"
                   value={selectedShift}
                   onChange={(e) => setSelectedShift(e.target.value)}
                   className="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-900 focus:outline-none focus:border-blue-600 shadow-sm"
@@ -362,8 +366,9 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, initialCourseI
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-800 mb-1">Student Full Name *</label>
+                  <label htmlFor="fullName" className="block text-xs font-bold text-slate-800 mb-1">Student Full Name *</label>
                   <input
+                    id="fullName"
                     type="text"
                     required
                     placeholder="e.g. Shakhzod Umarov"
@@ -374,8 +379,9 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, initialCourseI
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-800 mb-1">Phone Number *</label>
+                  <label htmlFor="phone" className="block text-xs font-bold text-slate-800 mb-1">Phone Number *</label>
                   <input
+                    id="phone"
                     type="tel"
                     required
                     placeholder="+998 (90) 123-45-67"
@@ -386,8 +392,9 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, initialCourseI
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-800 mb-1">Target Score / Goal</label>
+                  <label htmlFor="targetGoal" className="block text-xs font-bold text-slate-800 mb-1">Target Score / Goal</label>
                   <input
+                    id="targetGoal"
                     type="text"
                     placeholder="e.g. Target IELTS Band 7.5+ or Oxford Full Grant"
                     value={targetGoal}

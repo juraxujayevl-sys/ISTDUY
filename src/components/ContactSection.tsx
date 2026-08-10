@@ -137,14 +137,14 @@ export const ContactSection: React.FC<ContactProps> = ({ onFormSubmit }) => {
               </div>
             </div>
 
-            {/* Interactive Map Visual Box - embed Tayloq, Samarqand map */}
+            {/* Interactive Map Visual Box - embed ISTUDY location */}
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-slate-50 h-64 shadow-sm group">
               <iframe
-                title="Tayloq, Samarqand map"
-                src="https://www.google.com/maps?q=Tayloq%2C%20Samarqand%2C%20Uzbekistan&output=embed"
+                title="ISTUDY O‘quv Markazi map"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12296.474526782271!2d67.095077!3d39.60201!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d27bd10d5ff59%3A0xa2dec6a0875478e7!2sISTUDY%20O%E2%80%98quv%20Markazi!5e0!3m2!1suz!2sus!4v1786343759291!5m2!1suz!2sus"
                 className="absolute inset-0 w-full h-full border-0"
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
               />
               {/* Overlay with branch info */}
               <div className="absolute left-6 top-6 z-20 flex items-center gap-2 bg-white/90 px-3 py-1.5 rounded-xl border border-slate-200 text-xs text-slate-900 shadow-sm">

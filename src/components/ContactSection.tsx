@@ -137,31 +137,28 @@ export const ContactSection: React.FC<ContactProps> = ({ onFormSubmit }) => {
               </div>
             </div>
 
-            {/* Interactive Map Visual Box */}
+            {/* Interactive Map Visual Box - embed Tayloq, Samarqand map */}
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-slate-50 h-64 shadow-sm group">
-              {/* Simulated Map Background Canvas */}
-              <div className="absolute inset-0 bg-slate-100 p-6 flex flex-col justify-between overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-60" />
-                
-                <div className="relative z-10 flex items-center justify-between">
-                  <div className="flex items-center gap-2 bg-white/90 px-3 py-1.5 rounded-xl border border-slate-200 text-xs text-slate-900 shadow-sm">
-                    <Navigation className="w-3.5 h-3.5 text-blue-600 animate-bounce" />
-                    <span className="font-bold">{activeBranch.name}</span>
-                  </div>
-                  <span className="text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg font-bold">
-                    {activeBranch.metro}
-                  </span>
+              <iframe
+                title="Tayloq, Samarqand map"
+                src="https://www.google.com/maps?q=Tayloq%2C%20Samarqand%2C%20Uzbekistan&output=embed"
+                className="absolute inset-0 w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              {/* Overlay with branch info */}
+              <div className="absolute left-6 top-6 z-20 flex items-center gap-2 bg-white/90 px-3 py-1.5 rounded-xl border border-slate-200 text-xs text-slate-900 shadow-sm">
+                <Navigation className="w-3.5 h-3.5 text-blue-600" />
+                <span className="font-bold">Tayloq</span>
+              </div>
+              <div className="absolute left-6 bottom-6 z-20 bg-white/95 p-3 rounded-2xl border border-slate-200 text-xs backdrop-blur-md shadow-sm">
+                <div className="flex items-center gap-2 text-slate-900">
+                  <Phone className="w-3.5 h-3.5 text-blue-600" />
+                  <span className="font-bold">+998 (71) 200-77-88</span>
                 </div>
-
-                <div className="relative z-10 bg-white/95 p-4 rounded-2xl border border-slate-200 text-xs space-y-1.5 backdrop-blur-md shadow-sm">
-                  <div className="flex items-center gap-2 text-slate-900">
-                    <Phone className="w-3.5 h-3.5 text-blue-600" />
-                    <span className="font-bold">{activeBranch.phone}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-slate-600">
-                    <Clock className="w-3.5 h-3.5 text-amber-500" />
-                    <span>{activeBranch.hours}</span>
-                  </div>
+                <div className="flex items-center gap-2 text-slate-600 mt-1">
+                  <Clock className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Mon–Sat: 09:00 – 18:00</span>
                 </div>
               </div>
             </div>

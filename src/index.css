@@ -78,3 +78,12 @@ html.dark .placeholder-slate-400::placeholder {
   color: #64748b !important;
 }
 
+/* Utility to hide scrollbars while keeping scrollability */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+

@@ -24,7 +24,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnroll, onOpenVideo }) => {
   const topResults = results.slice(0, 3);
 
   return (
-    <section id="home" className="bg-slate-50 relative min-h-screen pt-28 lg:pt-36 pb-20 flex flex-col justify-between overflow-hidden text-slate-900">
+    <section id="home" className="bg-slate-50 relative min-h-screen pt-24 sm:pt-28 lg:pt-36 pb-20 flex flex-col justify-between overflow-hidden text-slate-900">
       {/* Background Ambient Glows */}
       <div className="absolute top-[-5%] right-[-5%] w-[500px] h-[500px] bg-blue-100/70 rounded-full blur-[120px] pointer-events-none z-0" />
       <div className="absolute top-[35%] left-[-5%] w-[400px] h-[400px] bg-indigo-100/50 rounded-full blur-[100px] pointer-events-none z-0" />

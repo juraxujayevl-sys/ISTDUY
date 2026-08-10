@@ -459,3 +459,23 @@ export const deleteResult = async (id: string) => {
   const { error } = await supabase.from('results').delete().eq('id', id);
   parseError(error);
 };
+
+export const validateAdminCode = async (code: string) => {
+  if (!code || !code.trim()) {
+    throw new Error('Admin code is required.');
+  }
+
+  const { data, error } = await supabase
+    .from('admin_credentials')
+    .select('id, username')
+    .eq('code', code.trim())
+    .single();
+
+  parseError(error);
+
+  if (!data) {
+    throw new Error('Invalid admin code.');
+  }
+
+  return data;
+};

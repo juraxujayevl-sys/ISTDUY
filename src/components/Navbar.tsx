@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Globe, Menu, Moon, Sun, X } from 'lucide-react';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
+import logo from '../assets/images/logo.png';
 
 interface NavbarProps {
   onOpenEnroll: (courseId?: string) => void;
@@ -55,12 +56,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnroll }) => {
         <button
           type="button"
           onClick={() => scrollToSection('home')}
-          className="inline-flex items-center gap-2 text-slate-900 transition hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400"
+          className="inline-flex items-center gap-3 text-slate-900 transition hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400"
           aria-label="Go to home"
         >
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/20 ring-1 ring-white/20">
-            iS
-          </span>
+          <img
+            src={logo}
+            alt="iStudy Academy logo"
+            className="h-10 w-10 rounded-2xl object-cover border border-slate-200 shadow-sm dark:border-slate-700"
+          />
           <span className="text-base font-semibold tracking-tight">
             iStudy Academy
           </span>

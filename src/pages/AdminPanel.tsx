@@ -63,6 +63,8 @@ import {
   fetchResults,
   fetchTeachers,
   fetchTestimonials,
+  getSession,
+  signOut,
   uploadMedia,
   updateBranch,
   updateContactRequest,
@@ -117,6 +119,7 @@ export const AdminPanel: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [authChecked, setAuthChecked] = useState(false);
   
   // Drawer / Modal editor states
   const [isEditorOpen, setIsEditorOpen] = useState<boolean>(false);
@@ -172,8 +175,34 @@ export const AdminPanel: React.FC = () => {
   };
 
   useEffect(() => {
+    const verifyAuth = async () => {
+      try {
+        const storedCode = localStorage.getItem('istudy-admin-code');
+        const loginTs = Number(localStorage.getItem('istudy-admin-login-ts'));
+
+        if (!storedCode || !loginTs || Date.now() - loginTs > 3600 * 1000) {
+          localStorage.removeItem('istudy-admin-code');
+          localStorage.removeItem('istudy-admin-login-ts');
+          navigate('/admin/login', { replace: true });
+          return;
+        }
+
+        await validateAdminCode(storedCode);
+        setAuthChecked(true);
+      } catch (authError) {
+        localStorage.removeItem('istudy-admin-code');
+        localStorage.removeItem('istudy-admin-login-ts');
+        navigate('/admin/login', { replace: true });
+      }
+    };
+
+    verifyAuth();
+  }, [navigate]);
+
+  useEffect(() => {
+    if (!authChecked) return;
     loadSectionData(activeSection);
-  }, [activeSection]);
+  }, [activeSection, authChecked]);
 
   // Initializing blank form state based on active section schema
   const getInitialFormState = (section: SectionKey, item?: any): Record<string, any> => {
@@ -443,6 +472,23 @@ export const AdminPanel: React.FC = () => {
 
   const activeConfig = sectionConfigs.find((s) => s.key === activeSection)!;
 
+  const handleLogout = () => {
+    localStorage.removeItem('istudy-admin-code');
+    localStorage.removeItem('istudy-admin-login-ts');
+    navigate('/admin/login', { replace: true });
+  };
+
+  if (!authChecked) {
+    return (
+      <div className="min-h-screen bg-slate-950 text-slate-200 flex items-center justify-center px-4">
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/95 px-8 py-10 text-center shadow-2xl shadow-black/40">
+          <div className="mb-4 h-12 w-12 rounded-full border-4 border-blue-500 border-t-transparent animate-spin mx-auto" />
+          <p className="text-sm font-medium">Checking admin authentication...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-900 font-sans text-slate-100 flex flex-col xl:flex-row antialiased selection:bg-blue-600 selection:text-white">
       
@@ -610,6 +656,14 @@ export const AdminPanel: React.FC = () => {
             >
               <Plus className="w-4 h-4" />
               <span>Add Record</span>
+            </button>
+
+            <button
+              onClick={handleLogout}
+              className="px-5 py-2.5 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-lg shadow-rose-600/30 flex items-center gap-2 transition-all"
+            >
+              <LogOut className="w-4 h-4" />
+              <span>Logout</span>
             </button>
           </div>
         </header>
